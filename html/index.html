@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ประวัติส่วนตัว - Profile</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 20px;
+        background-color: #f0f2f5;
+        color: #1c1e21;
+      }
+      .profile-card {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .profile-img {
+        border-radius: 50%;
+        border: 6px solid #38bdf8;
+        margin-bottom: 25px;
+        transition: transform 0.3s ease;
+      }
+      .profile-img:hover {
+        transform: scale(1.05);
+      }
+      h1 {
+        color: #0f172a;
+        font-size: 2.8em;
+        margin: 10px 0;
+      }
+      h2,
+      h3 {
+        color: #1e293b;
+        border-bottom: 3px solid #38bdf8;
+        display: inline-block;
+        margin-top: 30px;
+        padding-bottom: 5px;
+        text-align: left;
+        width: 100%;
+      }
+      p {
+        font-size: 1.1em;
+        color: #4b5563;
+        margin: 15px 0;
+      }
+      .bio {
+        font-style: italic;
+        color: #64748b;
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+      .list-container {
+        text-align: left;
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      ul,
+      ol {
+        padding-left: 25px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      .social-media {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .btn-social {
+        padding: 12px 25px;
+        background-color: #0f172a;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      .btn-social:hover {
+        background-color: #38bdf8;
+        color: #0f172a;
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-card">
+      <!-- <img>: รูป Profile Avatar -->
+      <img
+        src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+        alt="โปรไฟล์รูปภาพของฉัน"
+        class="profile-img"
+        width="180"
+      />
+
+      <!-- <h1>: ชื่อที่เด่นที่สุด -->
+      <h1>นายสมชาย สายโค้ด</h1>
+
+      <!-- <p>: ไบโอแนะนำตัวสั้นๆ -->
+      <p class="bio">
+        "โค้ดเปลี่ยนโลก การเรียนรู้คือการเดินทางที่ไม่มีวันสิ้นสุด"
+      </p>
+
+      <!-- <h2>: หัวข้อประวัติส่วนตัว -->
+      <h2>ประวัติส่วนตัว</h2>
+      <p>
+        สวัสดีครับ!
+        ผมเป็นคนรักการเขียนโปรแกรมที่หลงใหลในการสร้างสรรค์เว็บไซต์ที่สวยงามและใช้งานง่าย
+        ผมเชื่อว่าเทคโนโลยีสามารถทำให้ชีวิตของทุกคนดีขึ้นได้
+      </p>
+
+      <div class="list-container">
+        <!-- <h3>: แบ่งหัวข้อย่อย -->
+        <h3>ทักษะและสิ่งที่สนใจ</h3>
+        <!-- <ul>: ลิสต์สิ่งที่ไม่ต้องเรียงลำดับ -->
+        <ul>
+          <li>การเขียนโปรแกรมเว็บ (HTML, CSS, JS)</li>
+          <li>การออกแบบ UI/UX</li>
+          <li>ภาษาโปรแกรมที่อยากเรียน: Python, Go, Rust</li>
+          <li>งานอดิเรก: เล่นบอร์ดเกม, อ่านหนังสือเทคโนโลยี</li>
+        </ul>
+
+        <h3>Top 3 เกมที่ชอบที่สุด</h3>
+        <!-- <ol>: ลิสต์สิ่งที่ต้องเรียงลำดับ -->
+        <ol>
+          <li>Elden Ring</li>
+          <li>The Legend of Zelda: Breath of the Wild</li>
+          <li>Valorant</li>
+        </ol>
+      </div>
+
+      <!-- <a>: ปุ่มลิงก์ไป Social Media -->
+      <div class="social-media">
+        <a href="https://github.com" target="_blank" class="btn-social"
+          >GitHub</a
+        >
+        <a href="https://facebook.com" target="_blank" class="btn-social"
+          >Facebook</a
+        >
+        <a href="https://instagram.com" target="_blank" class="btn-social"
+          >Instagram</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

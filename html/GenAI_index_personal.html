@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Personal Profile - IT Shop</title>
+    <style>
+      /* Base Styles */
+      :root {
+        --primary-color: #38bdf8;
+        --dark-bg: #0f172a;
+        --light-text: #f8fafc;
+        --transition: all 0.3s ease;
+        --dropdown-bg: #1e293b;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f1f5f9;
+        color: #334155;
+      }
+
+      /* HEADER & NAVIGATION */
+      header {
+        background: var(--dark-bg);
+        color: var(--light-text);
+        padding: 0 40px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* LOGO Section */
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        cursor: pointer;
+      }
+
+      .logo-icon {
+        background: var(--primary-color);
+        color: var(--dark-bg);
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .company-name {
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        background: linear-gradient(to right, #fff, var(--primary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* MENU Section & DROPDOWN */
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        position: relative; /* สำหรับ Dropdown */
+        padding: 10px 0;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #cbd5e1;
+        font-weight: 500;
+        font-size: 16px;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      nav ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Dropdown Menu Styling */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--dropdown-bg);
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: var(--transition);
+        display: block; /* ซ่อนไว้ก่อน */
+        z-index: 1100;
+      }
+
+      nav ul li:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown a {
+        padding: 12px 20px;
+        display: block;
+        color: #cbd5e1;
+        font-size: 14px;
+        border-bottom: 1px solid #334155;
+        transition: var(--transition);
+      }
+
+      .dropdown a:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown a:hover {
+        background-color: var(--dark-bg);
+        color: var(--primary-color);
+        padding-left: 25px; /* เอฟเฟกต์เลื่อนตอน hover */
+      }
+
+      .caret {
+        font-size: 10px;
+        transition: transform 0.3s;
+      }
+
+      nav ul li:hover .caret {
+        transform: rotate(180deg);
+      }
+
+      /* RIGHT SIDE (Search & Buttons) */
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .search-box {
+        position: relative;
+      }
+
+      .search-box input {
+        background: #1e293b;
+        border: 1px solid #334155;
+        color: white;
+        padding: 10px 15px 10px 35px;
+        border-radius: 20px;
+        outline: none;
+        width: 150px;
+        transition: var(--transition);
+      }
+
+      .search-box input:focus {
+        width: 200px;
+        border-color: var(--primary-color);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #64748b;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-login {
+        background: transparent;
+        color: white;
+        border: 1px solid #334155;
+      }
+
+      .btn-login:hover {
+        background: #1e293b;
+      }
+
+      .btn-register {
+        background: var(--primary-color);
+        color: var(--dark-bg);
+      }
+
+      .btn-register:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      }
+
+      /* Profile Content Layout */
+      .main-content {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      }
+
+      .profile-img-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid var(--primary-color);
+        object-fit: contain; /* เปลี่ยนเป็น contain เพื่อให้เห็นโลโก้เต็มใบ */
+        background: #f8fafc;
+      }
+
+      .highlight-text {
+        color: var(--dark-bg);
+        font-weight: 700;
+        border-left: 4px solid var(--primary-color);
+        padding-left: 15px;
+        margin: 20px 0;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        nav,
+        .search-box {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <!-- LOGO + COMPANY NAME -->
+        <div class="logo-section">
+          <div class="logo-icon">IT</div>
+          <div class="company-name">NEXT GEN IT SHOP</div>
+        </div>
+
+        <!-- MENU -->
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+
+            <!-- Dropdown สินค้า -->
+            <li>
+              <a href="#">สินค้า <span class="caret">▼</span></a>
+              <div class="dropdown">
+                <a href="#">คอมพิวเตอร์ประกอบ</a>
+                <a href="#">โน๊ตบุ๊คเกมมิ่ง</a>
+                <a href="#">อุปกรณ์เสริม (Gaming Gear)</a>
+                <a href="#">ฮาร์ดแวร์ & อะไหล่</a>
+              </div>
+            </li>
+
+            <li><a href="#">บทความ IT</a></li>
+
+            <!-- Dropdown IT Service -->
+            <li>
+              <a href="#">IT Service <span class="caret">▼</span></a>
+              <div class="dropdown">
+                <a href="#">ซ่อมคอมพิวเตอร์</a>
+                <a href="#">กู้คืนข้อมูล</a>
+                <a href="#">ติดตั้งระบบเครือข่าย</a>
+                <a href="#">จัดสเปกคอมพิวเตอร์ฟรี</a>
+              </div>
+            </li>
+
+            <li><a href="#">ติดต่อเรา</a></li>
+          </ul>
+        </nav>
+
+        <!-- RIGHT SIDE -->
+        <div class="header-right">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="ค้นหาสินค้า..." />
+          </div>
+          <button class="btn btn-login">Login</button>
+          <button class="btn btn-register">Register</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <center>
+        <h1 style="font-size: 2.5em; color: #0f172a; margin-bottom: 40px">
+          My Personal Profile
+        </h1>
+      </center>
+
+      <div class="profile-grid">
+        <!-- Card 1: Intro (เปลี่ยนรูปเป็นไฟล์ท้องถิ่นตามสั่ง) -->
+        <div class="card">
+          <div class="profile-img-container">
+            <!-- รูปภาพจาก pictures/logopage_nobg2.png -->
+            <img
+              src="pictures/logopage_nobg2.png"
+              alt="Profile Logo"
+              class="profile-img"
+            />
+          </div>
+          <h2 style="text-align: center">My Profile</h2>
+          <p style="text-align: center; line-height: 1.8">
+            ผมเป็นนักพัฒนาในยุค Next Generation
+            ที่มุ่งเน้นการพัฒนาอย่างต่อเนื่อง มีความสามารถในการวิเคราะห์ปัญหา
+            ออกแบบระบบ และเรียนรู้เทคโนโลยีใหม่ ๆ
+          </p>
+        </div>
+
+        <!-- Card 2: Details -->
+        <div class="card" style="background: var(--dark-bg); color: white">
+          <h2 style="color: var(--primary-color)">🚀 NEXT GEN IT</h2>
+          <div
+            class="highlight-text"
+            style="color: white; border-color: var(--primary-color)"
+          >
+            ชื่อเล่น: ตรี (Tri)<br />
+            ชื่อจริง: มนตรี เทคโนโลยี
+          </div>
+          <p style="color: #cbd5e1; line-height: 1.8">
+            ผมเป็นนักพัฒนาไอทีรุ่นใหม่ มุ่งมั่นในการพัฒนาทักษะด้านเทคโนโลยี
+            พร้อมเรียนรู้เครื่องมือใหม่ ๆ เช่น Web Development, Database และ AI
+            เพื่อสร้างผลงานที่ตอบโจทย์ผู้ใช้งานในยุคดิจิทัล
+          </p>
+        </div>
+
+        <!-- Card 3: Skills -->
+        <div class="card">
+          <h3
+            style="
+              border-bottom: 2px solid var(--primary-color);
+              padding-bottom: 10px;
+            "
+          >
+            ทักษะที่เชี่ยวชาญ
+          </h3>
+          <ul style="padding-left: 20px; line-height: 2">
+            <li>Web Development (HTML, CSS, JS)</li>
+            <li>UI/UX Design</li>
+            <li>Learning: Python, Go, Rust</li>
+            <li>Hobby: Board Games, Tech Books</li>
+          </ul>
+
+          <h3
+            style="
+              border-bottom: 2px solid var(--primary-color);
+              padding-bottom: 10px;
+              margin-top: 25px;
+            "
+          >
+            Top 3 Games
+          </h3>
+          <ol style="padding-left: 20px; line-height: 2">
+            <li>Elden Ring</li>
+            <li>Zelda: Breath of the Wild</li>
+            <li>Valorant</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Video Section -->
+      <div class="card" style="margin-top: 40px; text-align: center">
+        <h2
+          class="highlight-text"
+          style="display: inline-block; border: none; padding: 0"
+        >
+          <pre>
+       "ผมคือ Buffalo และ Buffalo ก็คือผม ไม่ใช่แค่ชื่อ แต่คือแนวคิด
+       ความอึด ความทน และการเดินไปข้างหน้าไม่หยุด นี่แหละตัวตนของผม"
+        </pre
+          >
+        </h2>
+        <div style="margin-top: 20px">
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            controls
+            width="100%"
+            style="
+              max-width: 800px;
+              border-radius: 15px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            "
+          >
+            <source src="video/buffalo.mp4" type="video/mp4" />
+            Browser ของคุณไม่รองรับการเล่นวิดีโอ
+          </video>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test ทดสอบ Title</title>
+
+    <style>
+      .content {
+        text-align: center; /* จัดกึ่งกลาง */
+        max-width: 600px; /* คุมความกว้าง */
+        margin: auto; /* จัดให้อยู่กลางหน้า */
+        line-height: 1.6;
+      }
+      .profile {
+        max-width: 600px;
+        margin: auto;
+        padding: 25px;
+        background: #0f172a;
+        color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .profile h2 {
+        margin-bottom: 15px;
+      }
+
+      .profile p {
+        line-height: 1.6;
+        color: #cbd5f5;
+      }
+
+      .list-container {
+        text-align: left;
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      ul,
+      ol {
+        padding-left: 25px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      .social-media {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .btn-social {
+        padding: 12px 25px;
+        background-color: #0f172a;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      .btn-social:hover {
+        background-color: #38bdf8;
+        color: #0f172a;
+        transform: translateY(-3px);
+      }
+    </style>
+    <style>
+      .logo {
+        width: 200px;
+        height: auto;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* HEADER */
+      header {
+        background: #0f172a;
+        color: #fff;
+        padding: 10px 30px;
+      }
+
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* LOGO */
+      .logo {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      /* MENU */
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        cursor: pointer;
+      }
+
+      nav ul li:hover {
+        color: #38bdf8;
+      }
+
+      /* SEARCH */
+      .search-box input {
+        padding: 6px 10px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      /* RIGHT SIDE */
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .btn {
+        padding: 6px 12px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .login {
+        background: #1e293b;
+        color: #fff;
+      }
+
+      .register {
+        background: #38bdf8;
+        color: #000;
+      }
+
+      .cart {
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .search-box {
+          display: none;
+        }
+      }
+    </style>
+
+    <div class="header-container">
+      <!-- LOGO -->
+      <div class="logo">IT Shop</div>
+
+      <!-- MENU -->
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>สินค้า</li>
+          <li>บทความ IT</li>
+          <li>IT Service</li>
+          <li>ติดต่อเรา</li>
+        </ul>
+      </nav>
+
+      <!-- RIGHT -->
+      <div class="header-right">
+        <!-- SEARCH -->
+        <div class="search-box">
+          <input type="text" placeholder="ค้นหาสินค้า..." />
+        </div>
+
+        <!-- CART -->
+        <div class="cart">🛒</div>
+
+        <!-- BUTTON -->
+        <button class="btn login">Login</button>
+        <button class="btn register">Register</button>
+      </div>
+    </div>
+  </head>
+
+  <body>
+    <center><h1>แนะนำ My Personal Profile ในรูปแบบต่างๆ</h1></center>
+
+    <table border="1" width="100%">
+      <tr>
+        <th>My Personal Profile</th>
+        <th>แนะนำตัว</th>
+        <th>ความหมายของ Lorem3</th>
+      </tr>
+
+      <tr>
+        <td widht="25.33%">
+          <h2><center>My Profile</center></h2>
+          <center>
+            <img src="pictures/logopage_nobg2.png" alt="Logo" class="logo" />
+          </center>
+          <section class="content">
+            <p>
+              ผมเป็นนักพัฒนาในยุค Next Generation
+              ที่มุ่งเน้นการพัฒนาอย่างต่อเนื่อง มีความสามารถในการวิเคราะห์ปัญหา
+              ออกแบบระบบ และเรียนรู้เทคโนโลยีใหม่ ๆ
+              เพื่อสร้างโซลูชันที่มีประสิทธิภาพและตอบโจทย์ผู้ใช้งานจริง
+            </p>
+          </section>
+        </td>
+
+        <td widht="33.33%">
+          <section class="profile">
+            <h2>🚀 NEXT GEN IT</h2>
+
+            <p><strong>ชื่อเล่น:</strong> ตรี (Tri)</p>
+            <p>
+              <strong>ชื่อจริง:</strong> มนตรี เทคโนโลยี (Montri Technology)
+            </p>
+
+            <p>
+              ผมเป็นนักพัฒนาไอทีรุ่นใหม่ (Next Generation IT)
+              ที่มีความมุ่งมั่นในการพัฒนา ทักษะด้านเทคโนโลยีอย่างต่อเนื่อง
+              มีความสามารถในการวิเคราะห์ปัญหา และออกแบบระบบให้มีประสิทธิภาพ
+              พร้อมเรียนรู้เครื่องมือและเทคโนโลยีใหม่ ๆ เช่น Web Development,
+              Database และ AI เพื่อสร้างผลงานที่ใช้งานได้จริง
+              และตอบโจทย์ผู้ใช้งานในยุคดิจิทัล
+            </p>
+          </section>
+        </td>
+
+        <td widht="33.33%">
+          <div class="list-container">
+            <!-- <h3>: แบ่งหัวข้อย่อย -->
+            <h3>ทักษะและสิ่งที่สนใจ</h3>
+            <!-- <ul>: ลิสต์สิ่งที่ไม่ต้องเรียงลำดับ -->
+            <ul>
+              <li>การเขียนโปรแกรมเว็บ (HTML, CSS, JS)</li>
+              <li>การออกแบบ UI/UX</li>
+              <li>ภาษาโปรแกรมที่อยากเรียน: Python, Go, Rust</li>
+              <li>งานอดิเรก: เล่นบอร์ดเกม, อ่านหนังสือเทคโนโลยี</li>
+            </ul>
+
+            <h3>Top 3 เกมที่ชอบที่สุด</h3>
+            <!-- <ol>: ลิสต์สิ่งที่ต้องเรียงลำดับ -->
+            <ol>
+              <li>Elden Ring</li>
+              <li>The Legend of Zelda: Breath of the Wild</li>
+              <li>Valorant</li>
+            </ol>
+            <a href="https://facebook.com" target="_blank">
+              <img
+                src="pictures/facebook.png"
+                width="50"
+                height="50"
+                alt="Facebook"
+              />
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div class="grid-container">
+      <div class="card" widht="100%">
+        <center>
+          <pre>
+          <h1>
+     "ผมคือ Buffalo และ Buffalo ก็คือผม ไม่ใช่แค่ชื่อ แต่คือแนวคิด
+     ความอึด ความทน และการเดินไปข้างหน้าไม่หยุด นี่แหละตัวตนของผม"
+          </h1>
+          <video autoplay controls muted width="560" height="315">
+            <source src="video/buffalo.mp4" />
+            Browser คุณไม่รองรับไฟล์จากทางเว็บ
+          </video>
+          </pre>
+        </center>
+        <audio src="">เล่นเพลง</audio>
+      </div>
+
+      <div class="card">
+        <h2>ความหมายของ Lorem2</h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque,
+          error voluptates, quaerat obcaecati impedit ducimus, sequi praesentium
+          animi officia eveniet optio. Ullam commodi autem maxime repellendus
+          magnam recusandae quam asperiores.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>ความหมายของ Lorem3</h2>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque,
+          error voluptates, quaerat obcaecati impedit ducimus, sequi praesentium
+          animi officia eveniet optio. Ullam commodi autem maxime repellendus
+          magnam recusandae quam asperiores.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
