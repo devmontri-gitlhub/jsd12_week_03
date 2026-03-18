@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football Manager - Player List</title>
+    <style>
+      :root {
+        --fm-dark: #121212;
+        --fm-dark-header: #1e1e1e;
+        --fm-row-even: #252525;
+        --fm-row-odd: #2a2a2a;
+        --fm-row-hover: #3a3a3a;
+        --fm-purple: #7b1fa2;
+        --fm-green: #4caf50;
+        --fm-blue: #2196f3;
+        --fm-text: #e0e0e0;
+        --fm-muted: #b0b0b0;
+        --fm-border: #444;
+      }
+
+      body {
+        background-color: var(--fm-dark);
+        color: var(--fm-text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--fm-purple);
+        padding-bottom: 10px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 24px;
+        color: var(--fm-purple);
+        text-transform: uppercase;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        background-color: var(--fm-row-odd);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      thead tr {
+        background-color: var(--fm-dark-header);
+        border-bottom: 2px solid var(--fm-border);
+      }
+
+      th {
+        text-align: left;
+        padding: 12px 10px;
+        color: var(--fm-muted);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      td {
+        padding: 10px;
+        border-bottom: 1px solid var(--fm-border);
+      }
+
+      tr:nth-child(even) {
+        background-color: var(--fm-row-even);
+      }
+
+      tr:hover {
+        background-color: var(--fm-row-hover);
+        cursor: pointer;
+      }
+
+      .pos {
+        background-color: var(--fm-purple);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: bold;
+        font-size: 11px;
+        display: inline-block;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      .nationality {
+        font-size: 18px;
+        margin-right: 8px;
+      }
+
+      .value {
+        color: var(--fm-green);
+        font-weight: bold;
+      }
+
+      .wage {
+        color: var(--fm-blue);
+      }
+
+      .inf {
+        color: #ffc107;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      /* Player Stats Styling (Optional if you want small badges) */
+      .stat {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 50%;
+        margin-right: 5px;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .stat-high {
+        background-color: #4caf50;
+        color: #fff;
+      }
+      .stat-mid {
+        background-color: #ff9800;
+        color: #fff;
+      }
+      .stat-low {
+        background-color: #f44336;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Manchester City - First Team Squad</h1>
+      </header>
+
+      <table>
+        <thead>
+          <tr>
+            <th width="30">Inf</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Nat</th>
+            <th>Value</th>
+            <th>Wage</th>
+            <th>Contract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="inf">Wnt</span></td>
+            <td><strong>Erling Haaland</strong></td>
+            <td><span class="pos">ST (C)</span></td>
+            <td>23</td>
+            <td><span class="nationality">🇳🇴</span> NOR</td>
+            <td class="value">£185M</td>
+            <td class="wage">£375k</td>
+            <td>2027</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>Kevin De Bruyne</strong></td>
+            <td><span class="pos">M (C), AM (C)</span></td>
+            <td>32</td>
+            <td><span class="nationality">🇧🇪</span> BEL</td>
+            <td class="value">£95M</td>
+            <td class="wage">£400k</td>
+            <td>2025</td>
+          </tr>
+          <tr>
+            <td><span class="inf">Inj</span></td>
+            <td><strong>Rodri</strong></td>
+            <td><span class="pos">DM, M (C)</span></td>
+            <td>27</td>
+            <td><span class="nationality">🇪🇸</span> ESP</td>
+            <td class="value">£110M</td>
+            <td class="wage">£220k</td>
+            <td>2027</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>Phil Foden</strong></td>
+            <td><span class="pos">AM (RLC)</span></td>
+            <td>23</td>
+            <td><span class="nationality">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> ENG</td>
+            <td class="value">£120M</td>
+            <td class="wage">£225k</td>
+            <td>2027</td>
+          </tr>
+          <tr>
+            <td><span class="inf">Unh</span></td>
+            <td><strong>Bernardo Silva</strong></td>
+            <td><span class="pos">M (C), AM (RC)</span></td>
+            <td>29</td>
+            <td><span class="nationality">🇵🇹</span> POR</td>
+            <td class="value">£80M</td>
+            <td class="wage">£300k</td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>Ederson</strong></td>
+            <td><span class="pos">GK</span></td>
+            <td>30</td>
+            <td><span class="nationality">🇧🇷</span> BRA</td>
+            <td class="value">£65M</td>
+            <td class="wage">£100k</td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><strong>Ruben Dias</strong></td>
+            <td><span class="pos">D (C)</span></td>
+            <td>26</td>
+            <td><span class="nationality">🇵🇹</span> POR</td>
+            <td class="value">£85M</td>
+            <td class="wage">£180k</td>
+            <td>2027</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
