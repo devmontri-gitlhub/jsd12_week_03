@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ยืนยันข้อมูลและบันทึก - Project HTML to Excel</title>
+    <!-- โหลด Library Chart.js มาใช้งานวาดกราฟ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h2 { color: #1a73e8; border-bottom: 2px solid #e8f0fe; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; font-weight: 600; width: 35%; }
+        tr:nth-child(even) { background-color: #fdfdfd; }
+        .button-group { display: flex; gap: 10px; margin-top: 25px; }
+        button, .back-btn { padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+        .save-btn { background-color: #28a745; color: white; }
+        .back-btn { background-color: #6c757d; color: white; display: inline-block; }
+        button:hover { opacity: 0.9; }
+        .chart-container { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+        .status-msg { margin-top: 10px; font-weight: bold; color: #1a73e8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ตรวจสอบความถูกต้องของข้อมูล</h2>
+        
+        <!-- พื้นที่สำหรับแสดงตารางข้อมูลที่ส่งมาจากหน้าแรก -->
+        <div id="data-display">
+             <p>กำลังประมวลผลข้อมูลจากฟอร์ม...</p>
+        </div>
+
+        <div class="button-group">
+            <!-- ปุ่มสั่งบันทึกข้อมูลไปที่ Server (Node.js) -->
+            <button onclick="saveToServer()" class="save-btn">ยืนยันและบันทึกข้อมูลลงไฟล์ Excel</button>
+            <!-- ปุ่มย้อนกลับไปแก้ไขหน้าแรก -->
+            <a href="index_register_noai.html" class="back-btn">ย้อนกลับไปแก้ไข</a>
+        </div>
+        
+        <!-- ข้อความแสดงสถานะการบันทึก -->
+        <div id="status-display" class="status-msg"></div>
+
+        <div class="chart-container">
+            <h3>การแสดงข้อมูลเชิงภาพ (Visualization)</h3>
+            <canvas id="registrationChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. การดึงข้อมูลจาก URL (Query Parameters) มาแสดงผล ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const userData = {}; // ตัวแปรสำหรับเก็บข้อมูลที่จะส่งไป Server
+        
+        let tableHtml = "<table>";
+        urlParams.forEach((value, key) => {
+            userData[key] = value; // เก็บข้อมูลลงใน Object
+            let displayKey = key.charAt(0).toUpperCase() + key.slice(1);
+            let displayValue = (key === 'password') ? '********' : value; // ปิดบังรหัสผ่าน
+            tableHtml += `<tr><th>${displayKey}</th><td>${displayValue}</td></tr>`;
+        });
+        tableHtml += "</table>";
+        document.getElementById('data-display').innerHTML = tableHtml;
+
+        // --- 2. การส่งข้อมูลไปยัง Node.js Server (server.js) ---
+        async function saveToServer() {
+            const status = document.getElementById('status-display');
+            status.textContent = "กำลังทำการบันทึกข้อมูล...";
+            
+            try {
+                // ส่งข้อมูล (POST) ไปที่ API ของเราที่รันอยู่ที่ Port 3000
+                const response = await fetch('http://localhost:3000/save-excel', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData) // ส่งข้อมูลผู้สมัครไปในรูปแบบ JSON
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    status.textContent = "บันทึกข้อมูลลงไฟล์ register.xlsx สำเร็จ!";
+                    alert("บันทึกข้อมูลเรียบร้อยแล้ว!");
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (err) {
+                console.error(err);
+                status.textContent = "เกิดข้อผิดพลาด: " + err.message;
+                alert("บันทึกไม่สำเร็จ: " + err.message + "\n(โปรดตรวจสอบว่าได้รัน node server.js หรือยัง)");
+            }
+        }
+
+        // --- 3. การสร้างกราฟเปรียบเทียบจากข้อมูลที่ส่งมา ---
+        const ctx = document.getElementById('registrationChart').getContext('2d');
+        const skillLevel = parseInt(userData.skill) || 0; // ดึงค่าทักษะมาเป็นตัวเลข
+        const age = parseInt(userData.age) || 0;         // ดึงอายุมาเป็นตัวเลข
+
+        new Chart(ctx, {
+            type: 'bar', // กราฟแท่ง
+            data: {
+                labels: ['ระดับทักษะ (%)', 'อายุ (ปี)'],
+                datasets: [{
+                    label: 'ข้อมูลเชิงสถิติของผู้สมัคร',
+                    data: [skillLevel, age],
+                    backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+                    borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true, max: 100 } // กำหนดให้แกน Y เริ่มที่ 0 และสูงสุด 100
+                },
+                plugins: { legend: { display: true } }
+            }
+        });
+    </script>
+</body>
+</html>

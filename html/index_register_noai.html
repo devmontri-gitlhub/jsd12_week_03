@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form (Table Layout - No CSS)</title>
+</head>
+<body bgcolor="#f4f4f9" text="#333333">
+
+    <br>
+    <table border="0" align="center" cellpadding="0" cellspacing="0" width="750">
+        <tr>
+            <td align="center">
+                <h2><font face="Arial, Helvetica, sans-serif" color="#333333">ลงทะเบียนสมาชิกใหม่ (Table Version)</font></h2>
+                <hr color="#dddddd" size="1">
+            </td>
+        </tr>
+    </table>
+
+    <form action="index_register_noai_show.html" method="GET">
+        <table border="1" align="center" cellpadding="12" cellspacing="0" bgcolor="#ffffff" width="750" bordercolor="#cccccc">
+            
+            <!-- Account Info -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">1. ข้อมูลพื้นฐาน</font></th>
+            </tr>
+            <tr>
+                <td width="280"><b><font face="Arial" size="2">Username (text):</font></b></td>
+                <td><input type="text" name="username" size="45" required></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Password (password):</font></b></td>
+                <td><input type="password" name="password" size="45" required></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Email (email):</font></b></td>
+                <td><input type="email" name="email" size="45" required></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Age (number):</font></b></td>
+                <td><input type="number" name="age" min="1" max="120"></td>
+            </tr>
+
+            <!-- Dates & Times -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">2. วันที่และเวลา</font></th>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Date of Birth (date):</font></b></td>
+                <td><input type="date" name="dob"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Appointment (time):</font></b></td>
+                <td><input type="time" name="appt"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Meeting (datetime-local):</font></b></td>
+                <td><input type="datetime-local" name="meeting"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Month (month):</font></b></td>
+                <td><input type="month" name="month"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Select Week (week):</font></b></td>
+                <td><input type="week" name="week"></td>
+            </tr>
+
+            <!-- Contact & Preferences -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">3. การติดต่อและตัวเลือก</font></th>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Phone (tel):</font></b></td>
+                <td><input type="tel" name="phone" size="45" placeholder="081-234-5678"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Website (url):</font></b></td>
+                <td><input type="url" name="website" size="45" placeholder="https://"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Favorite Color (color):</font></b></td>
+                <td><input type="color" name="favcolor" value="#4CAF50"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Search Interest (search):</font></b></td>
+                <td><input type="search" name="search" size="45"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Skill Level (range 0-100):</font></b></td>
+                <td>
+                    <table border="0" width="100%">
+                        <tr>
+                            <td width="10%">0</td>
+                            <td align="center"><input type="range" name="skill" min="0" max="100" style="width: 100%;"></td>
+                            <td width="10%" align="right">100</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- Uploads & Choices -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">4. ข้อมูลเพิ่มเติม</font></th>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Profile Picture (file):</font></b></td>
+                <td><input type="file" name="profile_pic"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Interests (checkbox):</font></b></td>
+                <td>
+                    <input type="checkbox" name="interests" value="Coding"> Coding &nbsp;
+                    <input type="checkbox" name="interests" value="Gaming"> Gaming &nbsp;
+                    <input type="checkbox" name="interests" value="Music"> Music
+                </td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Gender (radio):</font></b></td>
+                <td>
+                    <input type="radio" name="gender" value="Male"> Male &nbsp;
+                    <input type="radio" name="gender" value="Female"> Female &nbsp;
+                    <input type="radio" name="gender" value="Other"> Other
+                </td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Country (select):</font></b></td>
+                <td>
+                    <select name="country">
+                        <option value="Thailand">Thailand</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Japan">Japan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Biography (textarea):</font></b></td>
+                <td><textarea name="bio" rows="4" cols="50"></textarea></td>
+            </tr>
+
+            <!-- Submit Button Area -->
+            <tr bgcolor="#f9f9f9">
+                <td colspan="2" align="center">
+                    <br>
+                    <input type="submit" value=" &nbsp;&nbsp; Submit Registration &nbsp;&nbsp; ">
+                    &nbsp;&nbsp;
+                    <input type="reset" value=" &nbsp;&nbsp; Reset Form &nbsp;&nbsp; ">
+                    <br><br>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+    <p align="center">
+        <font face="Arial" size="1" color="#888888">จัดระเบียบด้วย HTML Table โดยไม่พึ่งพา CSS 100%</font>
+    </p>
+
+</body>
+</html>

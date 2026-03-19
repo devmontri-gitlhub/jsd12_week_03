@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฟอร์มลงทะเบียน - Project HTML to Excel</title>
+</head>
+<body bgcolor="#f4f4f9" text="#333333">
+
+    <br>
+    <!-- หัวข้อของหน้า -->
+    <table border="0" align="center" cellpadding="0" cellspacing="0" width="750">
+        <tr>
+            <td align="center">
+                <h2><font face="Arial, Helvetica, sans-serif" color="#1a73e8">ลงทะเบียนสมาชิกใหม่ (ส่งข้อมูลลง Excel)</font></h2>
+                <hr color="#dddddd" size="1">
+            </td>
+        </tr>
+    </table>
+
+    <!-- 
+        แบบฟอร์ม (Form)
+        action="index_register_noai_show.html": เมื่อกด Submit ข้อมูลจะถูกส่งไปที่หน้านี้
+        method="GET": ส่งข้อมูลผ่านทาง URL เพื่อให้หน้าถัดไปดึงข้อมูลไปแสดงผลได้
+    -->
+    <form action="index_register_noai_show.html" method="GET">
+        <table border="1" align="center" cellpadding="12" cellspacing="0" bgcolor="#ffffff" width="750" bordercolor="#cccccc">
+            
+            <!-- ส่วนที่ 1: ข้อมูลบัญชี -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">1. ข้อมูลพื้นฐาน</font></th>
+            </tr>
+            <tr>
+                <td width="280"><b><font face="Arial" size="2">Username (ชื่อผู้ใช้):</font></b></td>
+                <td><input type="text" name="username" size="45" required></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Password (รหัสผ่าน):</font></b></td>
+                <td><input type="password" name="password" size="45" required></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Email (อีเมล):</font></b></td>
+                <td><input type="email" name="email" size="45" required></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Age (อายุ):</font></b></td>
+                <td><input type="number" name="age" min="1" max="120"></td>
+            </tr>
+
+            <!-- ส่วนที่ 2: วันที่และเวลา -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">2. วันที่และเวลา</font></th>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Date of Birth (วันเกิด):</font></b></td>
+                <td><input type="date" name="dob"></td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Appointment (เวลานัดหมาย):</font></b></td>
+                <td><input type="time" name="appt"></td>
+            </tr>
+
+            <!-- ส่วนที่ 3: ความสามารถและความสนใจ -->
+            <tr bgcolor="#eeeeee">
+                <th colspan="2" align="left"><font face="Arial" size="3">3. ความสามารถและความสนใจ</font></th>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Skill Level (ทักษะ 0-100):</font></b></td>
+                <td>
+                    <table border="0" width="100%">
+                        <tr>
+                            <td width="10%">0</td>
+                            <td align="center"><input type="range" name="skill" min="0" max="100" style="width: 100%;"></td>
+                            <td width="10%" align="right">100</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Interests (ความสนใจ):</font></b></td>
+                <td>
+                    <input type="checkbox" name="interests" value="Coding"> Coding &nbsp;
+                    <input type="checkbox" name="interests" value="Gaming"> Gaming &nbsp;
+                    <input type="checkbox" name="interests" value="Music"> Music
+                </td>
+            </tr>
+            <tr>
+                <td><b><font face="Arial" size="2">Country (ประเทศ):</font></b></td>
+                <td>
+                    <select name="country">
+                        <option value="Thailand">Thailand</option>
+                        <option value="USA">USA</option>
+                        <option value="UK">UK</option>
+                        <option value="Japan">Japan</option>
+                    </select>
+                </td>
+            </tr>
+
+            <!-- ปุ่มกด -->
+            <tr bgcolor="#f9f9f9">
+                <td colspan="2" align="center">
+                    <br>
+                    <!-- ปุ่มส่งฟอร์ม -->
+                    <input type="submit" value=" &nbsp;&nbsp; ไปที่หน้ายืนยันข้อมูล &nbsp;&nbsp; ">
+                    &nbsp;&nbsp;
+                    <!-- ปุ่มล้างค่าฟอร์ม -->
+                    <input type="reset" value=" &nbsp;&nbsp; ล้างค่าใหม่ &nbsp;&nbsp; ">
+                    <br><br>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+    <p align="center">
+        <font face="Arial" size="1" color="#888888">จัดระเบียบด้วย HTML Table แบบดั้งเดิม</font>
+    </p>
+
+</body>
+</html>

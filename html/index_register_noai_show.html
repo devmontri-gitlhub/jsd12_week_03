@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm & Save to Excel Server</title>
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        h2 { color: #1a73e8; border-bottom: 2px solid #e8f0fe; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        th { background-color: #f8f9fa; font-weight: 600; width: 35%; }
+        tr:nth-child(even) { background-color: #fdfdfd; }
+        .button-group { display: flex; gap: 10px; margin-top: 25px; }
+        button, .back-btn { padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; text-decoration: none; font-size: 14px; transition: opacity 0.2s; }
+        .save-btn { background-color: #28a745; color: white; }
+        .back-btn { background-color: #6c757d; color: white; display: inline-block; }
+        button:hover { opacity: 0.9; }
+        .chart-container { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+        .status-msg { margin-top: 10px; font-weight: bold; color: #1a73e8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Please Confirm Your Information</h2>
+        <div id="data-display">
+             <p>Analyzing form data...</p>
+        </div>
+
+        <div class="button-group">
+            <button onclick="saveToServer()" class="save-btn">Confirm and Save (Directly to Server)</button>
+            <a href="index_register_noai.html" class="back-btn">Back to Edit</a>
+        </div>
+        <div id="status-display" class="status-msg"></div>
+
+        <div class="chart-container">
+            <h3>Visual Information Display</h3>
+            <canvas id="registrationChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Extract parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userData = {};
+        
+        let tableHtml = "<table>";
+        urlParams.forEach((value, key) => {
+            userData[key] = value;
+            let displayKey = key.charAt(0).toUpperCase() + key.slice(1);
+            let displayValue = (key === 'password') ? '********' : value;
+            tableHtml += `<tr><th>${displayKey}</th><td>${displayValue}</td></tr>`;
+        });
+        tableHtml += "</table>";
+        document.getElementById('data-display').innerHTML = tableHtml;
+
+        // --- SAVE DATA VIA NODE.JS SERVER ---
+        async function saveToServer() {
+            const status = document.getElementById('status-display');
+            status.textContent = "Saving directly to C:\\...\\register.xlsx...";
+            
+            try {
+                // ส่งข้อมูลไปที่ http://localhost:3000/save-excel
+                const response = await fetch('http://localhost:3000/save-excel', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    status.textContent = "Successfully saved directly to register.xlsx!";
+                    alert("บันทึกข้อมูลเรียบร้อยแล้วที่:\nC:\\Users\\User\\jsd12\\week-03\\html\\register.xlsx");
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (err) {
+                console.error(err);
+                status.textContent = "Error: " + err.message;
+                alert("เกิดข้อผิดพลาด: " + err.message + "\n\n(โปรดแน่ใจว่าได้รัน node server.js แล้ว)");
+            }
+        }
+
+        // --- CHART VISUALIZATION ---
+        const ctx = document.getElementById('registrationChart').getContext('2d');
+        const skillLevel = parseInt(userData.skill) || 0;
+        const age = parseInt(userData.age) || 0;
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Skill Level (%)', 'Age (Years)'],
+                datasets: [{
+                    label: 'User Statistics',
+                    data: [skillLevel, age],
+                    backgroundColor: ['rgba(54, 162, 235, 0.6)', 'rgba(255, 99, 132, 0.6)'],
+                    borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <body>
+    <div class="container">
+    <table>
+    <Td><h2>Register Account</h2></Td>
+      
+      <form id="registerForm" action="index_register_noai_show.html" method="GET">
+        <!-- Text & Password -->
+        <div class="row">
+          <div class="form-group">
+            <tr><label for="username">Username (text):  </label></tr>
+            <tr>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              required
+            />
+            </tr>
+          </div>
+          <div class="form-group">
+            <tr width :"50%"><label for="password">Password (password):   </label></tr>
+            <tr width :"50%"><input type="password" id="password" name="password" required /></tr>
+          </div>
+        </div>
+
+        <!-- Email & Number -->
+        <div class="row">
+          <div class="form-group">
+            <label for="email">Email (email):</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="age">Age (number):</label>
+            <input type="number" id="age" name="age" min="1" max="120" />
+          </div>
+        </div>
+
+        <!-- Date & Time -->
+        <div class="row">
+          <div class="form-group">
+            <label for="dob">Date of Birth (date):</label>
+            <input type="date" id="dob" name="dob" />
+          </div>
+          <div class="form-group">
+            <label for="appt">Appointment (time):</label>
+            <input type="time" id="appt" name="appt" />
+          </div>
+        </div>
+
+        <!-- DateTime-Local & Month -->
+        <div class="row">
+          <div class="form-group">
+            <label for="meeting">Meeting (datetime-local):</label>
+            <input type="datetime-local" id="meeting" name="meeting" />
+          </div>
+          <div class="form-group">
+            <label for="month">Month (month):</label>
+            <input type="month" id="month" name="month" />
+          </div>
+        </div>
+
+        <!-- Week & Color -->
+        <div class="row">
+          <div class="form-group">
+            <label for="week">Select Week (week):</label>
+            <input type="week" id="week" name="week" />
+          </div>
+          <div class="form-group">
+            <label for="favcolor">Favorite Color (color):</label>
+            <input type="color" id="favcolor" name="favcolor" value="#4CAF50" />
+          </div>
+        </div>
+
+        <!-- Tel & URL -->
+        <div class="row">
+          <div class="form-group">
+            <label for="phone">Phone (tel):</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="081-234-5678"
+            />
+          </div>
+          <div class="form-group">
+            <label for="website">Website (url):</label>
+            <input
+              type="url"
+              id="website"
+              name="website"
+              placeholder="https://example.com"
+            />
+          </div>
+        </div>
+
+        <!-- Search & Range -->
+        <div class="form-group">
+          <label for="search">Search Interest (search):</label>
+          <input type="search" id="search" name="search" />
+        </div>
+
+        <div class="form-group">
+          <label for="skill">Skill Level (range 0-100):</label>
+          <input type="range" id="skill" name="skill" min="0" max="100" />
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+          <label for="profile_pic">Profile Picture (file):</label>
+          <input type="file" id="profile_pic" name="profile_pic" />
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-group">
+          <label>Interests (checkbox):</label>
+          <div class="checkbox-group">
+            <input
+              type="checkbox"
+              id="coding"
+              name="interests"
+              value="Coding"
+            />
+            <label for="coding">Coding</label>
+            <input
+              type="checkbox"
+              id="gaming"
+              name="interests"
+              value="Gaming"
+            />
+            <label for="gaming">Gaming</label>
+            <input type="checkbox" id="music" name="interests" value="Music" />
+            <label for="music">Music</label>
+          </div>
+        </div>
+
+        <!-- Radio -->
+        <div class="form-group">
+          <label>Gender (radio):</label>
+          <div class="radio-group">
+            <input type="radio" id="male" name="gender" value="Male" />
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" />
+            <label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="Other" />
+            <label for="other">Other</label>
+          </div>
+        </div>
+
+        <!-- Select & Textarea -->
+        <div class="form-group">
+          <label for="country">Country (select):</label>
+          <select id="country" name="country">
+            <option value="Thailand">Thailand</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Japan">Japan</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Biography (textarea):</label>
+          <textarea id="bio" name="bio" rows="3"></textarea>
+        </div>
+
+        <!-- Hidden input -->
+        <input type="hidden" name="token" value="abc123secret" />
+
+        <button type="submit">Submit Registration</button>
+        <input type="reset" value="Reset Form" />
+      </form>
+    </div>
+
+  
+   
+  </body>
+
+    
+
+</html>
